@@ -95,7 +95,8 @@ def voice_processing(message):
          writer = csv.writer(audio_file)
          writer.writerow(new_row)
 
-    samples, sample_rate = librosa.load('privet.wav')
+    # wav_fname = 'privet.wav'
+    samples, sample_rate = librosa.load(wav_fname)
     fig = plt.figure(figsize=[4, 4])
     ax = fig.add_subplot(111)
     ax.axes.get_xaxis().set_visible(False)
