@@ -26,7 +26,7 @@ with open("30phoneticexamples.csv", encoding="utf-8") as f:
         dict_exp.update({ row["termin_input"] : row["termin_explanation"]})
         dict_photo.update({ row["termin_input"] : row["photo_norm"]})
         dict_bu.update({ row["termin_input"] : row["photo_real"]})
-        
+
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('Привет', 'Пока','/help')
@@ -52,7 +52,7 @@ def send_text(message):
    elif message.text.lower() == 'пока':
        bot.send_message(message.chat.id, 'А я думал мы ещё пораспознаём...')
    elif message.text.lower() == 'давай ботать':
-       bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAEBHfVgalcUDaS9gTMwi7SfjS1KohcE6wACUQEAAjDUnRFgiXnyUbaU0x4E')       
+       bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAEBHfVgalcUDaS9gTMwi7SfjS1KohcE6wACUQEAAjDUnRFgiXnyUbaU0x4E')
    elif message.text.lower() in dict_termin.keys():
        bot.send_message(message.chat.id, dict_termin[message.text.lower()])
        if message.text.lower() in dict_exp.keys():
@@ -76,24 +76,25 @@ def send_text(message):
    else:
        bot.send_message(message.chat.id, "такого я не знаю : ( ")
 
-     
+
 @bot.message_handler(content_types=['voice'])
 def voice_processing(message):
     num = 0
     file_info = bot.get_file(message.voice.file_id)
     downloaded_file = bot.download_file(file_info.file_path)
-    with open(f'{message.chat.id}_{int(time())}.ogg', 'wb') as new_file:
+    ogg_fname = f'{message.chat.id}_{int(time())}.ogg'
+    wav_fname = ogg_fname.replace('.ogg', '.wav')
+    with open(ogg_fname, 'wb') as new_file:
         new_file.write(downloaded_file)
-    #data, samplerate = sf.read(f'{message.chat.id}_{int(time())}.ogg')
-    #sf.write(f'{message.chat.id}_{int(time())}.wav', data, samplerate)
-    
+    os.system(f"ffmpeg -i {ogg_fname} {wav_fname}")
+
     num += 1
-    new_row = [num, f'{message.chat.id}_{int(time())}.wav']
+    new_row = [num, wav_fname]
     with open('audio.csv', 'a', encoding="utf-8") as audio_file:
          table = csv.DictReader(audio_file, delimiter = ",")
          writer = csv.writer(audio_file)
          writer.writerow(new_row)
-         
+
     samples, sample_rate = librosa.load('privet.wav')
     fig = plt.figure(figsize=[4, 4])
     ax = fig.add_subplot(111)
@@ -122,7 +123,7 @@ def sticker_id(message):
 @bot.message_handler(content_types=['photo'])
 def photo_id(message):
         print(message)
-        
+
 
 
 bot.polling()
