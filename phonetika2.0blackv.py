@@ -16,12 +16,14 @@ bot = telebot.TeleBot("1696654491:AAH6Dei2EZGSlMUNJYk5VcwokYcr1RSFuOk", parse_mo
 
 dict_termin = {}
 dict_photo = {}
+dict_exp = {}
 dict_bu = {}
 
-with open("f_table.csv", encoding="utf-8") as f:
-    table = csv.DictReader(f, delimiter = ",")
+with open("30phoneticexamples.csv", encoding="utf-8") as f:
+    table = csv.DictReader(f, delimiter = ";")
     for row in table:
         dict_termin.update({ row["termin_input"] : row["termin_eng"]})
+        dict_exp.update({ row["termin_input"] : row["termin_explanation"]})
         dict_photo.update({ row["termin_input"] : row["photo_norm"]})
         dict_bu.update({ row["termin_input"] : row["photo_real"]})
         
@@ -53,10 +55,15 @@ def send_text(message):
        bot.send_sticker(message.chat.id, 'CAACAgIAAxkBAAEBHfVgalcUDaS9gTMwi7SfjS1KohcE6wACUQEAAjDUnRFgiXnyUbaU0x4E')       
    elif message.text.lower() in dict_termin.keys():
        bot.send_message(message.chat.id, dict_termin[message.text.lower()])
+       if message.text.lower() in dict_exp.keys():
+           if dict_exp[message.text.lower()] != "":
+               bot.send_message(message.chat.id, dict_exp[message.text.lower()])
        if message.text.lower() in dict_photo.keys():
-           photo = open(dict_photo[message.text.lower()], 'rb')
-           bot.send_photo(message.chat.id, photo)
-           if message.text.lower() in dict_bu.keys():
+           if dict_photo[message.text.lower()] != "":
+               photo = open(dict_photo[message.text.lower()], 'rb')
+               bot.send_photo(message.chat.id, photo)
+       if message.text.lower() in dict_bu.keys():
+           if dict_bu[message.text.lower()] != "":
                photo2 = open(dict_bu[message.text.lower()], 'rb')
                bot.send_photo(message.chat.id, photo2)
    elif message.text.lower() == 'записать':
