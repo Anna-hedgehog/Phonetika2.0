@@ -17,7 +17,6 @@
 ### С какими библиотеками мы работали:
 
 **pyTelegramBotAPI**  - собственно telegram bot
-***
 **[praat-parselmouth](https://parselmouth.readthedocs.io/en/stable/)** - позволяет создавать осциллограммы, спектрограммы
 ```@article{parselmouth,
     author = "Yannick Jadoul and Bill Thompson and Bart de Boer",
