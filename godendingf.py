@@ -44,8 +44,7 @@ def bot_messages(message):
 1. Рассказать тебе про фонетический термин:\n дам английский аналог и определение, покажу картинку\n(для этого отправь мне название термина на русском)\n
 2. Помучить тебя спектрограммами:\n
 - Ты можешь записать слово, которое в дальнейшем будет отгадывать другой человек\n(напиши боту : записать).\n
-- И можешь сам отгадывать спектрограммы\n(напиши боту: распознать)\n\n
-P.s. После команды распознать снова нажимай "/start" для перехода к остальной части.'''
+- И можешь сам отгадывать спектрограммы\n(напиши боту: распознать)'''
     bot.send_message(message.chat.id, text)
 
 @bot.message_handler(content_types=["text"])
@@ -96,8 +95,11 @@ def send_text(message):
    else:
        if message.text.lower() == word_recognize[len(word_recognize)-1]:
            bot.send_message(message.chat.id, "Верно! Ты настоящий фонетист!")
+           bot.send_sticker(message.chat.id, "CAACAgIAAxkBAAEBS-lgn0aYSfQFwB_A7rSUE-mkpfT8awACQw0AAtcBAAFJu3cn5y7NrJsfBA")
+           dict_users_states[message.chat.id] = ""
        elif message.text.lower() == "ответ":
            bot.send_message(message.chat.id,"Правильный ответ: " + word_recognize[len(word_recognize)-1])
+           dict_users_states[message.chat.id] = ""
        else:
            bot.send_message(message.chat.id, "Попробуй ещё!\n Присылай слово. Верю, у тебя получится!\n\n А если сдаёшься:\n напиши боту слово: ответ")
        
