@@ -2,7 +2,7 @@
 ## Проект студенток 1 курса ОП "Фундаментальная и компьютерная лингвистика" НИУ ВШЭ Кузнецовой Светланы и Анны Елагиной.
 ## Руководитель проекта: Олег Сериков
 
-**Бот в Telegram** - *@phonetika2_0bot*, который может:
+**Бот в Telegram** - *[@phonetika2_0bot](https://t.me/phonetika2_0bot) который может:
 + служить фонетическим справочником - отправлять в ответ на запрос термин на английском, определение и поясняющую картинку, а также фотографии и картинки речепроизводящих органов;
 + быть “фонетической игрушкой”:
     + записывать аудиосообщения пользователей,
@@ -19,7 +19,8 @@
 **pyTelegramBotAPI**  - собственно telegram bot
 
 **[praat-parselmouth](https://parselmouth.readthedocs.io/en/stable/)** - позволяет создавать осциллограммы, спектрограммы
-```@article{parselmouth,
+```
+@article{parselmouth,
     author = "Yannick Jadoul and Bill Thompson and Bart de Boer",
      = "Introducing {P}arselmouth: A {P}ython interface to {P}raat",
     journal = "Journal of Phonetics",
@@ -30,7 +31,8 @@
 }
 ```
 библиотека работает с программой **[praat](https://www.fon.hum.uva.nl/praat/)**:
-```@misc{praat,
+```
+@misc{praat,
     author = "Paul Boersma and David Weenink",
     title = "{P}raat: doing phonetics by computer [{C}omputer program]",
     howpublished = "Version 6.1.38, retrieved 2 January 2021 \url{http://www.praat.org/}",
