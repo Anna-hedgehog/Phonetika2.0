@@ -318,4 +318,6 @@ def sticker_id(message):
 def photo_id(message):
         print(message)
         
-bot.polling()
+#bot.polling()
+if __name__ == '__main__':
+    bot.polling(none_stop=True)
