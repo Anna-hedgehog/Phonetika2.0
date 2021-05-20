@@ -25,8 +25,8 @@ import ffmpeg
 import soundfile as sf
 import speech_recognition as sr
 
-bot.remove_webhook()
 bot = telebot.TeleBot("1888982099:AAFZRuNSnipKFyGPfa2ajHJhVIavS4zZYhs", parse_mode=None)
+bot.remove_webhook()
 
 dict_termin = {}
 dict_photo = {}
@@ -318,6 +318,4 @@ def sticker_id(message):
 def photo_id(message):
         print(message)
         
-#bot.polling()
-if __name__ == '__main__':
-    bot.polling(none_stop=True)
+bot.polling()
