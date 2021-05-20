@@ -25,7 +25,8 @@ import ffmpeg
 import soundfile as sf
 import speech_recognition as sr
 
-bot = telebot.TeleBot("1888982099:AAFZRuNSnipKFyGPfa2ajHJhVIavS4zZYhs", parse_mode=None)
+bot.remove_webhook()
+bot = telebot.TeleBot("1696654491:AAH6Dei2EZGSlMUNJYk5VcwokYcr1RSFuOk", parse_mode=None)
 
 dict_termin = {}
 dict_photo = {}
