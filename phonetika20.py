@@ -35,7 +35,7 @@ dict_bu = {}
 
 dict_users_states = {}
 
-with open("30phoneticexamples.csv", encoding="utf-8") as f:
+with open("111phoneticexamples.csv", encoding="utf-8") as f:
     table = csv.DictReader(f, delimiter = ";")
     for row in table:
         dict_termin.update({ row["termin_input"] : row["termin_eng"]})
@@ -85,7 +85,7 @@ def send_text(message):
 аффриката\n
 боковой\n
 веляризованный\n
-велярная\n
+велярная (инициация)\n
 велярные\n
 верхний подъём\n
 взрывной\n
@@ -132,13 +132,11 @@ def send_text(message):
 надгортанник\n
 назализация\n
 назализованный\n
-назализованный\n
 напряжённые\n
 нейтральная фонация\n
 ненапряжённые\n
 нижний подъём\n
 носовая полость\n
-носовой\n
 носовые\n
 оглушённый\n
 огубленный\n
